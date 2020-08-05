@@ -1,0 +1,16 @@
+name: tagbot
+
+on:
+  schedule:
+    # every six hour
+    # - cron: 0 */6 * * *
+    - cron: * * * * *
+
+jobs:
+  fetch_campus_reputation:
+    runs-on: ubuntu-latest
+    steps:
+        run: |
+          curl https://us-central1-ucdstat.cloudfunctions.net/CampusWire/?course=sta103&secret=$SECRET
+        env:
+          SECRET: ${{secrets.SECRET}}
