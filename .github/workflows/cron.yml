@@ -1,10 +1,12 @@
 name: cron
 
-on:
-  schedule:
-    # every six hour
-    # - cron: 0 */6 * * *
-    - cron: '* * * * *'
+# on:
+#   schedule:
+#     # every six hour
+#     # - cron: 0 */6 * * *
+#     - cron: '* * * * *'
+on: [push, pull_request]
+
 
 jobs:
   fetch_campus_reputation:
