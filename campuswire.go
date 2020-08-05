@@ -134,5 +134,8 @@ func CampusWire(w http.ResponseWriter, r *http.Request) {
 		}
 		coursesheet.Update(n + i - 1, m, time.Now().Format(time.RFC3339))
 	}
-	coursesheet.Synchronize()
+	err = coursesheet.Synchronize()
+	if err != nil {
+        log.Println(err)
+	}
 }
