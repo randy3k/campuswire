@@ -12,6 +12,6 @@ jobs:
     steps:
       - name: STA 103
         run: |
-          curl https://us-central1-ucdstat.cloudfunctions.net/CampusWire/?course=sta103&secret=$SECRET
+          curl --silent --show-error --fail https://us-central1-ucdstat.cloudfunctions.net/CampusWire/?course=sta103&secret=$SECRET
         env:
           SECRET: ${{secrets.SECRET}}
