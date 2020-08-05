@@ -17,3 +17,4 @@ jobs:
           curl https://us-central1-ucdstat.cloudfunctions.net/CampusWire/?course=sta103&secret=$STA103SECRET
         env:
           STA103SECRET: ${{secrets.STA103SECRET}}
+        shell: bash
