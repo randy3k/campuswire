@@ -123,10 +123,6 @@ func CampusWire(w http.ResponseWriter, r *http.Request) {
 	}
 
 	n := len(coursesheet.Rows)
-	if n <= 1 {
-		n = 0
-	}
-
 	m := len(records[0])
 
 	for i, record := range records {
