@@ -1,11 +1,9 @@
 name: cron
 
-# on:
-#   schedule:
-#     # every six hour
-#     # - cron: 0 */6 * * *
-#     - cron: '* * * * *'
-on: [push, pull_request]
+on:
+  schedule:
+    # every 12 hour
+    - cron: 0 */12 * * *
 
 
 jobs:
