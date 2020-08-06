@@ -1,18 +1,18 @@
-name: cron
+name: update campuswire reputation
 
-on:
-  schedule:
-    # every 12 hour
-    - cron: 0 */12 * * *
+# on:
+#   schedule:
+#     # every 12 hour
+#     - cron: 0 */12 * * *
 
+on: push
 
 jobs:
-  fetch_campus_reputation:
+  go:
     runs-on: ubuntu-latest
     steps:
-      - name: STA 103
-        run: |
-          curl --silent --show-error --fail "https://us-central1-ucdstat.cloudfunctions.net/CampusWire/?course=sta103&secret=$STA103SECRET"
-        env:
-          STA103SECRET: ${{secrets.STA103SECRET}}
-        shell: bash
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+        with:
+          go-version: '^1.13.1'
+      - run: go run main.go

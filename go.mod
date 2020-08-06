@@ -1,4 +1,4 @@
-module example.com/campuswire
+module main
 
 go 1.14
 
