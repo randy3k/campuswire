@@ -49,8 +49,8 @@ func getGroupID(spreadsheet spreadsheet.Spreadsheet, course, secret string) (boo
 	return false, ""
 }
 
-func SheetService(clientsecret string) (s *spreadsheet.Service, err error) {
-	data, err := ioutil.ReadFile(clientsecret)
+func sheetClient(secret string) (s *spreadsheet.Service, err error) {
+	data, err := ioutil.ReadFile(secret)
 	if err != nil {
 		return
 	}
@@ -89,13 +89,13 @@ func CampusWire(w http.ResponseWriter, r *http.Request) {
 	if _, err := os.Stat(clientsecret); os.IsNotExist(err) {
 		clientsecret = "client_secret.json"
 	}
-	service, err := SheetService(clientsecret)
+	cilent, err := sheetClient(clientsecret)
 	if err != nil {
         log.Println(err)
 		http.Error(w, "cannot access service account", http.StatusInternalServerError)
 		return
 	}
-	spreadsheet, err := service.FetchSpreadsheet(spreadsheetID)
+	spreadsheet, err := cilent.FetchSpreadsheet(spreadsheetID)
 	if err != nil {
         log.Println(err)
 		http.Error(w, "cannot access spreadsheet", http.StatusInternalServerError)
