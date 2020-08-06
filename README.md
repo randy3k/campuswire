@@ -1,6 +1,6 @@
-# Campuswire reputation
+# Campuswire Reputation Report
 
-This is go script to fetch Campuswire reputation and store it to a google sheet.
+This go script fetches reputation report from Campuswire and stores it to a google sheet.
 
 Three environment variables are needed
 

@@ -61,13 +61,11 @@ func main() {
 
 	cilent, err := sheetClient(clientSecret)
 	if err != nil {
-		log.Println(err)
-		return
+		log.Fatalln(err)
 	}
 	spreadsheet, err := cilent.FetchSpreadsheet(sheetID)
 	if err != nil {
-		log.Println(err)
-		return
+		log.Fatalln(err)
 	}
 
 	firstsheet, err := spreadsheet.SheetByTitle("course")
@@ -85,14 +83,12 @@ func main() {
 
 		coursesheet, err := spreadsheet.SheetByTitle(course)
 		if err != nil {
-			log.Println(err)
-			return
+			log.Fatalln(err)
 		}
 
 		records, err := getReputations(cwToken, groupId)
 		if err != nil {
-			log.Println(err)
-			return
+			log.Fatalln(err)
 		}
 
 		n := len(coursesheet.Rows)
@@ -109,7 +105,7 @@ func main() {
 		}
 		err = coursesheet.Synchronize()
 		if err != nil {
-			log.Println(err)
+			log.Fatalln(err)
 		}
 		log.Printf("course %s updated with %d records\n", course, len(records))
 	}
