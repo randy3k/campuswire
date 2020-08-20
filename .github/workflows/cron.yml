@@ -21,3 +21,9 @@ jobs:
           SHEETID: ${{secrets.SHEETID}}
           SHEETSECRET: ${{secrets.SHEETSECRET}}
           CWTOKEN: ${{secrets.CWTOKEN}}
+      - name: Create an issue
+        if: ${{ failure() }}
+        uses: maxkomarychev/oction-create-issue@v0.7.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: "Failure"
